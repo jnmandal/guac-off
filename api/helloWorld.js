@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const sequelize = require('../config/db.js');
+const sequelize = require('../models/index.js');
 
 const app = express();
 
