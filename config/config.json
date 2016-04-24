@@ -12,12 +12,5 @@
     "database": "guac-off_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
-  },
-  "production": {
-    "username": "postgres",
-    "password": null,
-    "database": "guac-off_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
   }
 }
