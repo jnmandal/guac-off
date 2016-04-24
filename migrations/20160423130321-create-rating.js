@@ -8,16 +8,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      comments: {
+        type: Sequelize.TEXT
+      },
+      headline: {
         type: Sequelize.STRING
+      },
+      value: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       user_id: {
         type: Sequelize.INTEGER,
         references: 'users'
       },
-      guacamole_id: {
-        type: Sequelize.INTEGER,
-        references: 'guacamoles'
+      ratable_id: {
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,

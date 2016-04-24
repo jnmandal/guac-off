@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var user = sequelize.define('user', {
+  var User = sequelize.define('user', {
     name: DataTypes.STRING,
     email: DataTypes.STRING
   }, {
@@ -8,8 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        User.hasMany(models.guacamole);
+        User.hasMany(models.rating);
       }
     }
   });
-  return user;
+  return User;
 };
