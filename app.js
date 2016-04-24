@@ -1,2 +1,2 @@
-var api = require('./api/helloWorld.js');
+var api = require('./api/index.js');
 api.listen(process.env.PORT || 3000);
