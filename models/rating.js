@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Rating = sequelize.define('rating', {
     value: DataTypes.INTEGER,
     comments: DataTypes.TEXT,
-    headline: DataTypes.STRING,
+    tags: DataTypes.TEXT,
     user_id: DataTypes.INTEGER,
     ratable_id: DataTypes.INTEGER
   }, {

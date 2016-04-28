@@ -11,12 +11,12 @@ module.exports = {
       comments: {
         type: Sequelize.TEXT
       },
-      headline: {
-        type: Sequelize.STRING
-      },
       value: {
         allowNull: false,
         type: Sequelize.INTEGER
+      },
+      tags: {
+        type: Sequelize.TEXT
       },
       user_id: {
         type: Sequelize.INTEGER,
