@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "resetdb": "dropdb guac-off_development && createdb guac-off_development && sequelize db:migrate"
   },
   "author": "powergives",
   "license": "GPL-3.0",
