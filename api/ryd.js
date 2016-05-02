@@ -1,5 +1,6 @@
 'use strict';
 const DB = require('../models/index');
+const localizations = require('../localizations/ryd.json');
 
 const reviewTemplate = [
   // stars
@@ -44,18 +45,20 @@ module.exports = function (app) {
   // endpoint requires a reviewer email!
   app.get('/ryd', (request, response) => {
     response.set('Content-Type', 'application/json');
+    response.set('Access-Control-Allow-Origin', '*');
     DB.guacamole
       .findAll()
       .then(guacamoles => {
         let dips = guacamoles.map(dip => {
             return {
               product_information: {name: dip.name},
-              review_template: reviewTemplate
+              review_template: reviewTemplate,
+              order_information: {order_date: Date.now()}
             }
         })
         response.send({
           merchant_information: {},
-          localizations: {},
+          localizations: localizations,
           purchaser_information: {name: 'Alexis Zorbas', email: 'zorbas@dalkas.gr'},
           purchases: dips
         });
