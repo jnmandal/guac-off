@@ -23,7 +23,7 @@ const reviewTemplate = [
   // tags
   {
     field_type: 'collection',
-    key: 'pros',
+    key: 'tags',
     label: 'Tags',
     required: false,
     input_type: 'CheckboxVertical',
