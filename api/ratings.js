@@ -7,13 +7,18 @@ const jsonParser = bodyParser.json();
 
 module.exports = function (app) {
   app.get('/ratings', function (req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
     res.set('Content-Type', 'application/json');
     DB.rating.findAll().then(ratings => {
         res.send(ratings);
     });
   });
   app.post('/ratings', jsonParser, function (req, res) {
-    if (!req.body) return res.sendStatus(400);
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Content-Type', 'application/json');
+    console.log(req.body)
+
+    if (!req.body.fields) return res.sendStatus(400);
 
     DB.user.findOrCreate({ where: {email: req.body.email}, attributes: ['id'] }).spread((user, created) => {
       DB.guacamole.findAll({ where: ["id = ?", req.body.guacamoleId]
