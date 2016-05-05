@@ -46,7 +46,13 @@ const reviewTemplate = [
 
 module.exports = function (app) {
   app.get('/ryd', (request, response) => {
-    const email = 'ben.taylor@powerreviews.com' //request.email
+    const email = request.query.email;
+    if (!email) {
+      response.status(403)
+      response.send({
+        error: 'email required'
+      })
+    }
 
     response.set('Content-Type', 'application/json');
     response.set('Access-Control-Allow-Origin', '*');
