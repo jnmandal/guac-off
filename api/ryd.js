@@ -23,7 +23,7 @@ const reviewTemplate = [
   // tags
   {
     field_type: 'collection',
-    key: 'pros',
+    key: 'tags',
     label: 'Tags',
     required: false,
     input_type: 'CheckboxVertical',
@@ -51,7 +51,10 @@ module.exports = function (app) {
       .then(guacamoles => {
         let dips = guacamoles.map(dip => {
             return {
-              product_information: {name: dip.name},
+                product_information: {
+                  name: dip.name,
+                  page_id: dip.id
+                },
               review_template: reviewTemplate,
               order_information: {order_date: Date.now()}
             }

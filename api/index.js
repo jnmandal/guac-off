@@ -5,6 +5,7 @@ const fs        = require('fs');
 const path      = require('path');
 
 let app = express();
+app.use('/assets', express.static('assets'));
 
 fs.readdirSync(__dirname)
   .filter(file => {
