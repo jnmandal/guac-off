@@ -6,6 +6,7 @@ const path      = require('path');
 
 let app = express();
 app.use('/assets', express.static('assets'));
+app.set('view engine', 'ejs');
 
 fs.readdirSync(__dirname)
   .filter(file => {

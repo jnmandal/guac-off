@@ -8,11 +8,12 @@
   <div id="app">
   </div>
   <script>
-    var email = localStorage.getItem('pr-email');
-    if (!email) {
-      email = prompt('enter your powerreviews email');
-      localStorage.setItem('pr-email', email);
+    var email = '<%= email %>';
+    if (!email) email = localStorage.getItem('pr-email');
+    while (!email) {
+       email = prompt('enter your powerreviews email');
     }
+    if (email) localStorage.setItem('pr-email', email);
     window.POWERREVIEWS.display.renderRYP('app', {merchant_user_email: email});
   </script>
   <link href="/assets/styles.css">
