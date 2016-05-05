@@ -20,7 +20,7 @@
     "add_custom_choice.add_button_label": "Add",
     "amazon_share.header": "Share your review on Amazon",
     "amazon_share.tooltip.mac": "Press cmnd-c to copy",
-    "ryp.purchase.purchased_date": "Purchased {0}",
+    "ryp.purchase.purchased_date": "Made with tender loving care on {0}",
     "amazon_share.fallback.copy_button": "Copy",
     "amazon_share.normal.button": "Copy Review to clipboard and go to Amazon form",
     "thank_you_page.return_text": "Great Job",
