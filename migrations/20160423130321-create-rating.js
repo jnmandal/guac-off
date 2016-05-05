@@ -22,8 +22,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: 'users'
       },
-      ratable_id: {
-        type: Sequelize.INTEGER
+      guacamole_id: {
+        type: Sequelize.INTEGER,
+        references: 'guacamoles'
       },
       created_at: {
         allowNull: false,
