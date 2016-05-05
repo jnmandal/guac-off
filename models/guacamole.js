@@ -9,9 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         Guacamole.belongsTo(models.user);
-        Guacamole.hasMany(models.rating, {
-          foreignKey: 'ratable_id'
-        });
+        Guacamole.hasMany(models.rating);
       }
     }
   });

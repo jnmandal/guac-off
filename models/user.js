@@ -10,6 +10,12 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         User.hasMany(models.guacamole);
         User.hasMany(models.rating);
+        User.belongsToMany(models.guacamole, {
+          as: 'RatedGuacamoles',
+          through: {
+            model: models.rating
+          }
+        });
       }
     }
   });

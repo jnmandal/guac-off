@@ -35,37 +35,69 @@ const reviewTemplate = [
         value: 'Cheesy'
       },
       {
-        value: 'Dry'
+        value: 'Savory'
+      },
+      {
+        value: 'Sweet'
       }
     ]
   }
 ]
 
 module.exports = function (app) {
-  // endpoint requires a reviewer email!
   app.get('/ryd', (request, response) => {
+    const email = request.query.email;
+    if (!email) {
+      response.status(403)
+      response.send({
+        error: 'email required'
+      })
+    }
+
     response.set('Content-Type', 'application/json');
     response.set('Access-Control-Allow-Origin', '*');
-    DB.guacamole
-      .findAll()
-      .then(guacamoles => {
-        let dips = guacamoles.map(dip => {
-            return {
-                product_information: {
-                  name: dip.name,
-                  page_id: dip.id
-                },
-              review_template: reviewTemplate,
-              order_information: {order_date: Date.now()}
+    DB.user
+      .findOrCreate({
+        where: {email}
+      })
+      .spread((user, created) => user.getRatedGuacamoles())
+      .then(ratedGuacs => {
+        DB.guacamole
+          .findAll()
+          .then(allGuacamoles => {
+            let unrated;
+            // if the user has rated any guacs... filter them out
+            if (ratedGuacs.length > 0) {
+              unrated = allGuacamoles.filter(guac => {
+                return !ratedGuacs
+                  .map(ratedGuac => ratedGuac.get('id') === guac.get('id'))
+                  .reduce((a,b) => a || b)
+              })
+            } else {
+              // otherwise all guacamoles are unrated
+              unrated = allGuacamoles;
             }
-        })
-        response.send({
-          merchant_information: {},
-          localizations: localizations,
-          purchaser_information: {name: 'Alexis Zorbas', email: 'zorbas@dalkas.gr'},
-          purchases: dips
-        });
-      });
+
+            let dips = unrated.map(dip => {
+                return {
+                    product_information: {
+                      name: dip.name,
+                      page_id: dip.id
+                    },
+                  review_template: reviewTemplate,
+                  order_information: {order_date: Date.now()}
+                }
+            })
+            response.send({
+              merchant_information: {},
+              localizations: localizations,
+              purchaser_information: {email},
+              purchases: dips
+            });
+          });
+      })
+
+
   });
 
 }

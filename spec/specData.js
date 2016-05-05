@@ -28,7 +28,7 @@ function createRandomRatings(guac) {
         comments: 'Lorem Ipsum',
         headline: 'Dolor Amet',
         user_id: user.get('id'),
-        ratable_id: guac.get('id')
+        guacamole_id: guac.get('id')
       });
     }
   });
