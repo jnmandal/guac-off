@@ -16,7 +16,7 @@ const reviewTemplate = [
     field_type: 'simple',
     key: 'comments',
     label: 'Thoughts',
-    required: true,
+    required: false,
     helper_text: 'Any comments on the dip? What worked? What didn\'t?',
     input_type: 'TextArea'
   },
