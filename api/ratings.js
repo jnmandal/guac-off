@@ -40,7 +40,7 @@ module.exports = function (app) {
           email: req.body.email,
           user_id: user.get('id'),
           name: data.name,
-          ratable_id: req.body.guacamoleId,
+          guacamole_id: req.body.guacamoleId,
           value: parseInt(data.value),
           comments: data.comments,
           tags: JSON.stringify(tags)

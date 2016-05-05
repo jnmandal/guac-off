@@ -10,6 +10,7 @@
   "author": "powergives",
   "license": "GPL-3.0",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "pg": "^4.5.3",
     "pg-hstore": "^2.3.2",
