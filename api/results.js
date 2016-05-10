@@ -19,9 +19,9 @@ module.exports = function (app) {
 
         return results
           .map(results => {
-            let average = (results
+            let average = Math.round(100*(results
               .map(result => result.value)
-              .reduce((a, b) => a + b)) / results.length;
+              .reduce((a, b) => a + b)) / results.length) / 100;
 
             return {
               id: results[0].get('guacamole_id'),
